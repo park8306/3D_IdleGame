@@ -11,9 +11,12 @@ public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
 
+    public MonsterSpawner monsterSpawner;
+
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
+        monsterSpawner = GameObject.FindObjectOfType<MonsterSpawner>();
     }
 
     public virtual void Enter()

@@ -26,14 +26,7 @@ public class PlayerAttackState : PlayerBaseState
         // 몬스터가 죽었고 추적할 몬스터가 없다면 Idle 상태로 전환
         if(IsMonsterDead())
         {
-            if(IsOtherMonster())
-            {
-                stateMachine.ChangeState(stateMachine.ChasingState);
-            }
-            else
-            {
-                stateMachine.ChangeState(stateMachine.IdleState);
-            }
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 
@@ -42,12 +35,6 @@ public class PlayerAttackState : PlayerBaseState
     private bool IsMonsterDead()
     {
         //return stateMachine.Target.IsDead();
-        return false;
-    }
-
-    // TODO : 추적할 몬스터가 있는지 확인
-    private bool IsOtherMonster()
-    {
         return false;
     }
 }

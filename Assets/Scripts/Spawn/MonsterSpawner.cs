@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
@@ -21,5 +22,32 @@ public class MonsterSpawner : MonoBehaviour
             monster.transform.localScale = Vector3.one * 1.5f;
             spawnMonsters.Add(monster);
         }
+    }
+
+    // 플레이어와 가장 가까운 몬스터를 찾아냄
+    public GameObject FindTarget(Vector3 playerPos)
+    {
+        GameObject nearMonster = null;
+        int nearIndex = -1;
+        float minDistance= float.MaxValue;
+
+        for (int i = 0; i < spawnMonsters.Count; i++)
+        {
+            // 활성화가 안되어 있는 적은 죽은 적임
+            if (!spawnMonsters[i].activeInHierarchy)
+                break;
+
+            float distance = (spawnMonsters[i].transform.position - playerPos).sqrMagnitude;
+            if(distance < minDistance)
+            {
+                nearIndex = i;
+                minDistance = distance;
+            }
+        }
+
+        if (nearIndex != -1)
+            return spawnMonsters[nearIndex];
+        else
+            return null;
     }
 }
