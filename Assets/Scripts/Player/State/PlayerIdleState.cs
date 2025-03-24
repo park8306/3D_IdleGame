@@ -10,13 +10,19 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.Player.speedModifier = 0f;
         base.Enter();
-        // 애니메이션 재생
+        // 타겟을 찾기
     }
 
     public override void Exit()
     {
         base.Exit();
-        // 애니메이션 종료
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (stateMachine.Target != null) stateMachine.ChangeState(stateMachine.ChasingState);
     }
 }

@@ -9,13 +9,20 @@ public class PlayerStateMachine : StateMachine
 
     // ╩Себ╣И
     // Idle
+    public PlayerIdleState IdleState { get; }
     // Chasing
+    public PlayerChasingState ChasingState { get; }
     // Attack
+    public PlayerAttackState AttackState { get; }
 
     public PlayerStateMachine(Player player)
     {
         Player = player;
         Target = FindNearMonster().gameObject;
+
+        IdleState = new PlayerIdleState(this);
+        ChasingState = new PlayerChasingState(this);
+        AttackState = new PlayerAttackState(this);
     }
 
 

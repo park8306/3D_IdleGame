@@ -70,8 +70,8 @@ public class PlayerBaseState : IState
 
     private float GetMovementSpeed()
     {
-        // 플레이어에서 가져올 데이터
-        return 5f;
+        // 플레이어에서 스피드 가져오기
+        return stateMachine.Player.speed * stateMachine.Player.speedModifier;
     }
 
     private void Rotate(Vector3 direction)
@@ -84,5 +84,16 @@ public class PlayerBaseState : IState
             // Slerp를 통해 스무스하게 바라볼 수 이도록 함
             playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, Time.deltaTime);
         }
+    }
+
+    protected void StartAnimation(string animationParam)
+    {
+        // 애니메이션 재생
+        stateMachine.Player.Animator.SetBool(animationParam, true);
+    }
+    protected void StopAnimation(string animationParam)
+    {
+        // 애니메이션 중단
+        stateMachine.Player.Animator.SetBool(animationParam, false);
     }
 }
