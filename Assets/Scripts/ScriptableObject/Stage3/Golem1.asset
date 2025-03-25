@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Golem1
   m_EditorClassIdentifier: 
   name: "\uACE8\uB8181"
-  atk: 0
-  hp: 0
-  spawnObj: {fileID: 0}
+  atk: 20
+  hp: 100
+  spawnObj: {fileID: 1438169871030806, guid: c9bc790a133e19c40b64d6db4cfb7a22, type: 3}

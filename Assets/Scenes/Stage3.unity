@@ -6771,7 +6771,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c2b0773e19beb4c922e9cddca5922d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageSpawnMonsters: []
+  stageSpawnMonsters:
+  - {fileID: 11400000, guid: b7f075947a8a9c74c897a85ee65e4d0c, type: 2}
+  - {fileID: 11400000, guid: f78ba33be16752f478771c4e7f936df3, type: 2}
+  - {fileID: 11400000, guid: b7f075947a8a9c74c897a85ee65e4d0c, type: 2}
+  - {fileID: 11400000, guid: f78ba33be16752f478771c4e7f936df3, type: 2}
+  - {fileID: 11400000, guid: 6cec0c5387122c043aae0948b736e7b5, type: 2}
   stageSpawnPoints:
   - {fileID: 498253721733695059}
   - {fileID: 8406845054339890180}
@@ -7567,7 +7572,7 @@ MonoBehaviour:
   speed: 5
   speedModifier: 0
   chasingSpeedModifier: 0.5
-  attackRange: 1.5
+  attackRange: 2
   atk: 10
 --- !u!114 &4063638146643399964
 MonoBehaviour:
