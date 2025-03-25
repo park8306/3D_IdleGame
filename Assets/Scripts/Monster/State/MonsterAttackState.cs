@@ -12,22 +12,24 @@ public class MonsterAttackState : MonsterBaseState
     {
         base.Enter();
         // 애니메이션 재생
+        StartAnimation("IsAttack");
     }
 
     public override void Exit()
     {
         base.Exit();
         // 애니메이션 종료
+        StopAnimation("IsAttack");
     }
 
     public override void Update()
     {
         base.Update();
 
-        // TODO : 플레이어가 죽으면 Idle로 전환
-        //if(IsPlayerDead())
-        //{
-        //    stateMachine.ChangeState(stateMachine.IdleState);
-        //}
+        if(stateMachine.Target.isDie)
+        {
+            stateMachine.Target = null;
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
     }
 }

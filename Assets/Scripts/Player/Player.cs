@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     private PlayerStateMachine stateMachine;
 
+    public Health Health { get; set; }
+
     // 임시적으로 필요한 데이터들 나중에 SO로 빼주면 됨
     public float speed = 5f;
     public float speedModifier;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
         Animator = GetComponent<Animator>();
 
         speedModifier = chasingSpeedModifier;
+        Health = GetComponent<Health>();
 
         stateMachine = new PlayerStateMachine(this);
     }
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleState);
+        Health.OnDie += OnDie;
     }
 
     private void Update()
@@ -57,4 +61,9 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
+    private void OnDie()
+    {
+        Animator.SetTrigger("IsDie");
+        enabled = false;
+    }
 }

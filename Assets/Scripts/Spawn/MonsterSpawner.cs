@@ -27,7 +27,6 @@ public class MonsterSpawner : MonoBehaviour
     // 플레이어와 가장 가까운 몬스터를 찾아냄
     public Transform FindTarget(Vector3 playerPos)
     {
-        GameObject nearMonster = null;
         int nearIndex = -1;
         float minDistance= float.MaxValue;
 

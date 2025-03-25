@@ -26,7 +26,7 @@ public class GhostAttackState : MonsterBaseState
         // 플레이어가 죽지 않았다면 공격
         if (!stateMachine.Target.isDie)
         {
-            stateMachine.Target.TakeDamage((int)stateMachine.Monster.monsterData.atk);
+            stateMachine.Target.TakeDelayDamage((int)stateMachine.Monster.monsterData.atk);
         }
         else
         {

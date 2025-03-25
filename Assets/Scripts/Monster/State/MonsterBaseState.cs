@@ -31,4 +31,14 @@ public class MonsterBaseState : IState
     public virtual void Update()
     {
     }
+    protected void StartAnimation(string animationParam)
+    {
+        // 애니메이션 재생
+        stateMachine.Monster.Animator.SetBool(animationParam, true);
+    }
+    protected void StopAnimation(string animationParam)
+    {
+        // 애니메이션 중단
+        stateMachine.Monster.Animator.SetBool(animationParam, false);
+    }
 }

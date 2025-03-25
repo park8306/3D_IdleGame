@@ -21,7 +21,8 @@ public class Health : MonoBehaviour
         isDie = false;
     }
 
-    public void TakeDamage(int damage)
+    // 딜레이를 가지고 데미지를 입을 때
+    public void TakeDelayDamage(int damage)
     {
         if (health == 0) return;
 
@@ -35,6 +36,20 @@ public class Health : MonoBehaviour
         health = Mathf.Max(health - damage, 0);
 
         if(health == 0)
+        {
+            isDie = true;
+            OnDie?.Invoke();
+        }
+
+        Debug.Log(health);
+    }
+    public void TakeDamage(int damage)
+    {
+        if (health == 0) return;
+
+        health = Mathf.Max(health - damage, 0);
+
+        if (health == 0)
         {
             isDie = true;
             OnDie?.Invoke();

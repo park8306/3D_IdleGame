@@ -29,6 +29,7 @@ public class MonsterIdleState : MonsterBaseState
 
     private bool IsInAttackRange()
     {
+        if (stateMachine.Target == null) return false;
         float distanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
 
         // 공격 범위를 지정해줘야 함

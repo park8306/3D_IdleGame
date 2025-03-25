@@ -11,7 +11,7 @@ public interface IDamagable
 
 public class MonsterHealth : MonoBehaviour, IDamagable
 {
-    public Ghost Ghost { get; private set; }
+    public Monster Monster { get; private set; }
 
     public float maxHealth;
     public float health;
@@ -21,8 +21,8 @@ public class MonsterHealth : MonoBehaviour, IDamagable
 
     private void Start()
     {
-        Ghost = GetComponent<Ghost>();
-        maxHealth = Ghost.monsterData.hp;
+        Monster = GetComponent<Monster>();
+        maxHealth = Monster.monsterData.hp;
         health = maxHealth;
         isDie = false;
     }

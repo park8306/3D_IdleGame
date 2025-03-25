@@ -41,4 +41,12 @@ public class Monster : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    public void AttackPlayer()
+    {
+        if (stateMachine.Target != null)
+        {
+            stateMachine.Target.TakeDamage((int)stateMachine.Monster.monsterData.atk);
+        }
+    }
 }

@@ -37,6 +37,8 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        if(stateMachine.Player.Health)
+
         Move();
     }
 
