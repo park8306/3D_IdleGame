@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAttackState : MonoBehaviour
+public class MonsterAttackState : MonsterBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public MonsterAttackState(MonsterStateMachine stateMachine) : base(stateMachine)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+        // 애니메이션 재생
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        // 애니메이션 종료
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        // TODO : 플레이어가 죽으면 Idle로 전환
+        //if(IsPlayerDead())
+        //{
+        //    stateMachine.ChangeState(stateMachine.IdleState);
+        //}
     }
 }

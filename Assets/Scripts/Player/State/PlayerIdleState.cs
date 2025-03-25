@@ -13,7 +13,11 @@ public class PlayerIdleState : PlayerBaseState
         stateMachine.Player.speedModifier = 0f;
         base.Enter();
         // 타겟을 찾기
-        stateMachine.Target = monsterSpawner.FindTarget(stateMachine.Player.transform.position);
+        stateMachine.TargetTr = monsterSpawner.FindTarget(stateMachine.Player.transform.position);
+        if(stateMachine.TargetTr)
+            stateMachine.Target = stateMachine.TargetTr.GetComponent<IDamagable>();
+        else
+            stateMachine.Target = null;
     }
 
     public override void Exit()
@@ -25,6 +29,6 @@ public class PlayerIdleState : PlayerBaseState
     {
         base.Update();
         // 타겟이 null이 아니라면 타겟을 추적
-        if (stateMachine.Target != null) stateMachine.ChangeState(stateMachine.ChasingState);
+        if (stateMachine.TargetTr != null) stateMachine.ChangeState(stateMachine.ChasingState);
     }
 }

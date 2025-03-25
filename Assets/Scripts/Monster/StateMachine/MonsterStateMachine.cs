@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterStateMachine : MonoBehaviour
+public class MonsterStateMachine : StateMachine
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Monster Monster { get; }
+    public Health Target { get; set; }
 
-    // Update is called once per frame
-    void Update()
+    public MonsterIdleState IdleState { get; set; }
+    public MonsterBaseState AttackState { get; set; }
+
+    public MonsterStateMachine(Monster monster)
     {
-        
+        Monster = monster;
+
+        IdleState = new MonsterIdleState(this);
+        AttackState = new MonsterAttackState(this);
+
+        Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
     }
 }

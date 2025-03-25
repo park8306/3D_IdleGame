@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public float chasingSpeedModifier = 1f;
     public float attackRange = 2f;
 
+    public int atk = 10;
+
     private void Awake()
     {
         Controller = GetComponent<CharacterController>();
@@ -40,6 +42,19 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
+    }
+
+    public void AttackMonster()
+    {
+        if(stateMachine.Target != null)
+        {
+            stateMachine.Target.TakeDamage(atk);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
 }

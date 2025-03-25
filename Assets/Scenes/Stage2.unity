@@ -6771,12 +6771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c2b0773e19beb4c922e9cddca5922d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageSpawnMonsters:
-  - {fileID: 11400000, guid: 83e9ef7e5d5d4bd4b86fc3f85e0c958a, type: 2}
-  - {fileID: 11400000, guid: 9643eb194093b0d46bfe1f14f955b52f, type: 2}
-  - {fileID: 11400000, guid: 59481a6c6ccae1f499d3dacaeafefd29, type: 2}
-  - {fileID: 11400000, guid: f2058b9dc4316d84da3e59dc49697dc7, type: 2}
-  - {fileID: 11400000, guid: 2870f6bff43c9b64cb53cbae64df0b54, type: 2}
+  stageSpawnMonsters: []
   stageSpawnPoints:
   - {fileID: 498253721733695059}
   - {fileID: 8406845054339890180}

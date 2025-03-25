@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\uACE0\uC2A4\uB4DC4"
   atk: 5
-  hp: 10
+  hp: 30
   spawnObj: {fileID: 2602231374797837610, guid: 855c90c429434444fbe3ca2b5507ab04, type: 3}

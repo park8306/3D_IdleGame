@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
-    public GameObject Target { get; set; }
+
+    public Transform TargetTr { get; set; }
+    public IDamagable Target { get; set; }
 
     // ╩Себ╣И
     // Idle

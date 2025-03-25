@@ -43,7 +43,7 @@ public class PlayerBaseState : IState
     private void Move()
     {
         // 가장 가까운 몬스터
-        Transform monster = stateMachine.Target != null ? stateMachine.Target.transform : null;
+        Transform monster = stateMachine.Target != null ? stateMachine.TargetTr : null;
 
         // 추적할 몬스터가 있으면
         if(monster != null)
@@ -66,7 +66,7 @@ public class PlayerBaseState : IState
 
     private Vector3 GetMovementDirection()
     {
-        Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Player.transform.position);
+        Vector3 dir = (stateMachine.TargetTr.position - stateMachine.Player.transform.position);
 
         return dir;
     }
@@ -98,5 +98,25 @@ public class PlayerBaseState : IState
     {
         // 애니메이션 중단
         stateMachine.Player.Animator.SetBool(animationParam, false);
+    }
+    protected float GetNormalizedTime(Animator animator, string tag)
+    {
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+        // 전환되고 있을 때 && 다음 애니메이션이 tag라면
+        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        {
+            return nextInfo.normalizedTime;
+        }
+        // 전환되고 있지 않을 때 && 현재 애니메이션이 tag라면
+        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+        {
+            return currentInfo.normalizedTime;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator Animator { get; private set; }
+
+    protected MonsterStateMachine stateMachine;
+
+    public float attackRate = 2f;
+    public float attackRange = 2f;
+
+    public MonsterSO monsterData;
+
+    protected void Awake()
     {
-        
+        Animator = GetComponent<Animator>();
+
+        stateMachine = new MonsterStateMachine(this);
+    }
+    // Start is called before the first frame update
+    protected void Start()
+    {
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        
+        stateMachine.HandleInput();
+        stateMachine.Update();
+    }
+
+    protected void FixedUpdate()
+    {
+        stateMachine.PhysicsUpdate();
+    }
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

@@ -34,7 +34,7 @@ public class PlayerChasingState : PlayerBaseState
 
     private bool IsInAttackRange()
     {
-        float distanceSqr = (stateMachine.Target.transform.position - stateMachine.Player.transform.position).sqrMagnitude;
+        float distanceSqr = (stateMachine.TargetTr.position - stateMachine.Player.transform.position).sqrMagnitude;
 
         // 공격 범위를 지정해줘야 함
         return distanceSqr <= stateMachine.Player.attackRange * stateMachine.Player.attackRange;

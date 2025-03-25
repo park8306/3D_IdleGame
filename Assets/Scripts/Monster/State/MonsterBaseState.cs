@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
-public class MonsterBaseState : MonoBehaviour
+public class MonsterBaseState : IState
 {
-    // Start is called before the first frame update
-    void Start()
+    protected MonsterStateMachine stateMachine;
+
+    public MonsterBaseState(MonsterStateMachine stateMachine)
     {
-        
+        this.stateMachine = stateMachine; 
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Enter()
     {
-        
+    }
+
+    public virtual void Exit()
+    {
+    }
+
+    public virtual void HandleInput()
+    {
+    }
+
+    public virtual void PhysicsUpdate()
+    {
+    }
+
+    public virtual void Update()
+    {
     }
 }
