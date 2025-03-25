@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public event Action onStageClear;
+    public event Action onStageFail;
+
+    public StageManager stageManager;
+
     private void Awake()
     {
         if(instance == null)
@@ -33,11 +39,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MainGameStart()
-    {
-        SceneManager.LoadScene("SelectStageScene");
-    }
-
     public void Stage1Btn()
     {
         SceneManager.LoadScene("Stage1");
@@ -49,5 +50,20 @@ public class GameManager : MonoBehaviour
     public void Stage3Btn()
     {
         SceneManager.LoadScene("Stage3");
+    }
+
+    public void SetStageHandle()
+    {
+        if (stageManager == null) return;
+        onStageClear += stageManager.StageClear;
+        onStageFail += stageManager.StageFail;
+    }
+    public void StageClear()
+    {
+        onStageClear?.Invoke();
+    }
+    public void StageFail()
+    {
+        onStageFail?.Invoke();
     }
 }

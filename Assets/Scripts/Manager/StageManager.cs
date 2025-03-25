@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -10,20 +11,29 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         stageUI = FindObjectOfType<StageUI>();
+
+        GameManager.Instance.stageManager = this;
+        GameManager.Instance.SetStageHandle();
     }
 
     public void StageClear()
     {
-        StageClearUI stageClearUI = stageUI.stageClearUI;
+        StageClearUI stageClearUI = GameManager.Instance.stageManager.stageUI.stageClearUI;
 
         stageClearUI.SetActive(true);
-        stageClearUI.SetRewardText(stageData.rewardGold);
+        stageClearUI.SetRewardText(GameManager.Instance.stageManager.stageData.rewardGold);
     }
 
     public void StageFail()
     {
-        StageFailUI stageFailUI = stageUI.stageFailUI;
+        StageFailUI stageFailUI = GameManager.Instance.stageManager.stageUI.stageFailUI;
 
         stageFailUI.SetActive(true);
+    }
+
+    public void MainGameStart()
+    {
+        SceneManager.LoadScene("SelectStageScene");
+        GameManager.Instance.stageManager = null;
     }
 }

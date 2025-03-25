@@ -9,6 +9,11 @@ public class StageSelect : MonoBehaviour
     public string stageSceneName;
     public TextMeshProUGUI stageTitle;
 
+    private void Start()
+    {
+        stageSceneName = "Stage1";
+    }
+
     public void SelectStage1()
     {
         stageSceneName = "Stage1";

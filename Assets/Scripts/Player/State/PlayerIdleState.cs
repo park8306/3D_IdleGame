@@ -17,7 +17,10 @@ public class PlayerIdleState : PlayerBaseState
         if(stateMachine.TargetTr)
             stateMachine.Target = stateMachine.TargetTr.GetComponent<IDamagable>();
         else
+        {
+            GameManager.Instance.StageClear();
             stateMachine.Target = null;
+        }
     }
 
     public override void Exit()

@@ -30,6 +30,7 @@ public class GhostAttackState : MonsterBaseState
         }
         else
         {
+            GameManager.Instance.StageFail();
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }

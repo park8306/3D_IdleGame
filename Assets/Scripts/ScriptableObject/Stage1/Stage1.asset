@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4c9d202df9aad4baa2637f4717b0be, type: 3}
   m_Name: Stage1
   m_EditorClassIdentifier: 
+  stageName: Stage1
   rewardGold: 100
+  rewardExp: 100

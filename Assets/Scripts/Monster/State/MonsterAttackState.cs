@@ -29,6 +29,7 @@ public class MonsterAttackState : MonsterBaseState
         if(stateMachine.Target.isDie)
         {
             stateMachine.Target = null;
+            GameManager.Instance.StageFail();
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
