@@ -60,10 +60,26 @@ public class GameManager : MonoBehaviour
     }
     public void StageClear()
     {
+        AddReward();
         onStageClear?.Invoke();
     }
     public void StageFail()
     {
         onStageFail?.Invoke();
+    }
+
+    public void AddReward()
+    {
+        if(stageManager != null)
+        {
+            int gold = PlayerPrefs.GetInt("Gold");
+            gold += stageManager.stageData.rewardGold;
+            PlayerPrefs.SetInt("Gold", gold);
+            PlayerInfoUI playerinfoUI = FindObjectOfType<PlayerInfoUI>();
+            if(playerinfoUI != null)
+            {
+                playerinfoUI.SetGoldText();
+            }
+        }
     }
 }
