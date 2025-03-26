@@ -6,7 +6,7 @@
 - 스테이지 선택 화면
 ![image](https://github.com/user-attachments/assets/819cacdf-6185-489f-bebf-8fb0f463bc05)
 - 스테이지
-![image](https://github.com/user-attachments/assets/a94c99b5-f2d1-4195-b8c3-7dd09fb2a6d2)
+![image](https://github.com/user-attachments/assets/947ef57c-3410-47c8-8b03-67ccb77e34f4)
 
 ## 게임 방법
 - 먼저 Game Start 버튼을 눌러 스테이지 선택화면으로 갑니다.
