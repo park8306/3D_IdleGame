@@ -34,4 +34,9 @@ public class StageSelect : MonoBehaviour
     {
         SceneManager.LoadScene(stageSceneName);
     }
+
+    public void BackBtn()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }
