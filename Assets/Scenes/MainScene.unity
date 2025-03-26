@@ -1881,10 +1881,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInfoUI
       objectReference: {fileID: 0}
-    - target: {fileID: 8235951280598759905, guid: e20e69c576963cb4899d187bbbf03e80, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -48.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
