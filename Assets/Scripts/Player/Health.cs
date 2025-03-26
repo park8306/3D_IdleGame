@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
-    private int health;
+    PlayerInfoUI playerInfoUI;
+    public int MaxHealth { get; private set; } = 100;
+    public int HP { get; set; }
     public event Action OnDie;
 
     public bool isDie = false;
@@ -17,14 +18,15 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        health = maxHealth;
+        playerInfoUI = FindObjectOfType<PlayerInfoUI>();
+        HP = MaxHealth;
         isDie = false;
     }
 
     // 딜레이를 가지고 데미지를 입을 때
     public void TakeDelayDamage(int damage)
     {
-        if (health == 0) return;
+        if (HP == 0) return;
 
         if (Time.time - lastDamageTime > damageRate)
         {
@@ -33,28 +35,26 @@ public class Health : MonoBehaviour
         else
             return;
 
-        health = Mathf.Max(health - damage, 0);
+        HP = Mathf.Max(HP - damage, 0);
+        playerInfoUI.UpdateHP();
 
-        if(health == 0)
+        if(HP == 0)
         {
             isDie = true;
             OnDie?.Invoke();
         }
-
-        Debug.Log(health);
     }
     public void TakeDamage(int damage)
     {
-        if (health == 0) return;
+        if (HP == 0) return;
 
-        health = Mathf.Max(health - damage, 0);
+        HP = Mathf.Max(HP - damage, 0);
+        playerInfoUI.UpdateHP();
 
-        if (health == 0)
+        if (HP == 0)
         {
             isDie = true;
             OnDie?.Invoke();
         }
-
-        Debug.Log(health);
     }
 }

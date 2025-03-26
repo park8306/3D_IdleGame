@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private PlayerStateMachine stateMachine;
 
     public Health Health { get; set; }
+    PlayerInfoUI playerInfoUI;
 
     // 임시적으로 필요한 데이터들 나중에 SO로 빼주면 됨
     public float speed = 5f;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
         speedModifier = chasingSpeedModifier;
         Health = GetComponent<Health>();
+        playerInfoUI = FindObjectOfType<PlayerInfoUI>();
 
         stateMachine = new PlayerStateMachine(this);
     }

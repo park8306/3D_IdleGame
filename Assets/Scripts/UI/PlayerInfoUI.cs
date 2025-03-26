@@ -14,8 +14,12 @@ public class PlayerInfoUI : MonoBehaviour
 
     public TextMeshProUGUI goldText;
 
+    public Health playerHealth;
+
     private void Start()
     {
+        playerHealth = FindObjectOfType<Health>();
+
         if (PlayerPrefs.HasKey("Gold"))
             SetGoldText();
         else
@@ -23,10 +27,28 @@ public class PlayerInfoUI : MonoBehaviour
             PlayerPrefs.SetInt("Gold", 0);
             goldText.text = "0";
         }
+
+        ResetHP();
     }
 
     public void SetGoldText()
     {
         goldText.text = PlayerPrefs.GetInt("Gold").ToString();
+    }
+
+    public void ResetHP()
+    {
+        if (playerHealth == null) return;
+
+        hp.fillAmount = 1;
+        hpText.text = $"{playerHealth.MaxHealth} / {playerHealth.MaxHealth}";
+    }
+
+    public void UpdateHP()
+    {
+        if (playerHealth == null) return;
+
+        hp.fillAmount = (float)playerHealth.HP / playerHealth.MaxHealth;
+        hpText.text = $"{playerHealth.HP} / {playerHealth.MaxHealth}";
     }
 }
